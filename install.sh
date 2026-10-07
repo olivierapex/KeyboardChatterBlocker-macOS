@@ -25,14 +25,12 @@ cat > "$AGENT" <<EOF
     <key>ProgramArguments</key>
     <array>
         <string>$APP/Contents/MacOS/KeyboardChatterBlocker</string>
+        <string>--background</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
-    <dict>
-        <key>SuccessfulExit</key>
-        <false/>
-    </dict>
+    <true/>
     <key>LimitLoadToSessionType</key>
     <string>Aqua</string>
     <key>ProcessType</key>

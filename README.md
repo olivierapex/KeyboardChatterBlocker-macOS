@@ -1,14 +1,14 @@
 Keyboard Chatter Blocker for macOS
 ----------------------------------
 
-A native macOS menu bar app that blocks mechanical keyboard chatter, where a single key press is typed twice or more. It drops a key press when it comes too soon after the previous press of the same key. You can set the threshold globally and per key.
+A lightweight macOS app that blocks mechanical keyboard chatter, where a single key press is typed twice or more. It drops a key press when it comes too soon after the previous press of the same key. You can set the threshold globally and per key.
 
 This app was inspired by, and ports the blocking logic of, [FreneticLLC/KeyboardChatterBlocker](https://github.com/FreneticLLC/KeyboardChatterBlocker), the Windows tool by Alex "mcmonkey" Goodwin and Frenetic LLC.
 
 ## Requirements
 
 - macOS 15 or newer (built and tested on macOS 27)
-- Xcode (the SwiftUI macro plugins aren't included in the Command Line Tools alone)
+- Xcode or the Command Line Tools (`xcode-select --install`)
 
 ## Install
 
@@ -16,7 +16,7 @@ This app was inspired by, and ports the blocking logic of, [FreneticLLC/Keyboard
 ./install.sh
 ```
 
-This builds the app, copies it to `/Applications`, and installs a launch agent (`~/Library/LaunchAgents/local.KeyboardChatterBlocker.plist`). The app then starts at login and is restarted if it ever crashes. If you choose **Quit** from the menu, it stays closed until your next login.
+This builds the app, copies it to `/Applications`, and installs a launch agent (`~/Library/LaunchAgents/local.KeyboardChatterBlocker.plist`). The launch agent starts the blocker in the background at every login, and launchd restarts it within about 10 seconds if it ever stops. The blocker has no icon or window and uses about 3 MB of memory.
 
 On the first run, macOS asks you to grant **Accessibility** permission (System Settings > Privacy & Security > Accessibility). Turn on **KeyboardChatterBlocker**. Blocking starts as soon as you do; the app doesn't need a restart.
 
@@ -34,17 +34,13 @@ rm -rf /Applications/KeyboardChatterBlocker.app ~/Library/Application\ Support/K
 
 ## Usage
 
-The app runs in the background, with only an icon in the menu bar and no Dock icon:
+Blocking runs in the background with no icon. To change settings, open **KeyboardChatterBlocker** from Applications or Spotlight. The window has three tabs:
 
-- Filled keyboard: blocking is on.
-- Outlined keyboard: blocking is off.
-- Warning triangle: the app is waiting for Accessibility permission.
-
-The menu has an **Enabled** toggle, opens the settings window, and quits the app. The settings window has three tabs:
-
-- **General**: the global chatter threshold and the options described under Config File.
+- **General**: the **Enabled** switch, the global chatter threshold, the options described under Config File, and whether the background blocker is running.
 - **Configure Keys**: press **Add Key…** and then the key to add it, then edit its threshold in the table.
 - **Chatter Log**: every blocked press, with the key and how many milliseconds after the previous press it came. **Configure** adds that key to the per-key list.
+
+The settings window is a separate process from the background blocker, and it quits when you close the window. The two stay in sync through the config file and `chatter_log.txt` in the same folder. The log is cleared each time the background blocker starts.
 
 ### Tuning
 
