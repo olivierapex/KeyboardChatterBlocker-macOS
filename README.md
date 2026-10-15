@@ -69,6 +69,12 @@ Key names follow macOS key positions on a US layout (`A`, `1`, `Space`, `Return`
 - While a password field has focus, macOS turns on Secure Event Input and hides keystrokes from the app, so chatter isn't blocked there.
 - Settings apply to all connected keyboards. macOS doesn't report which keyboard sent a key event.
 
+## Support
+
+If this app saves your keyboard, you can buy me a coffee:
+
+[![Buy me a coffee on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/olivierapex)
+
 ## License
 
 MIT, see [LICENSE.txt](LICENSE.txt).
