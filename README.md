@@ -1,6 +1,8 @@
 Keyboard Chatter Blocker for macOS
 ----------------------------------
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/olivierapex)
+
 A lightweight macOS app that blocks mechanical keyboard chatter, where a single key press is typed twice or more. It drops a key press when it comes too soon after the previous press of the same key. You can set the threshold globally and per key.
 
 This app was inspired by, and ports the blocking logic of, [FreneticLLC/KeyboardChatterBlocker](https://github.com/FreneticLLC/KeyboardChatterBlocker), the Windows tool by Alex "mcmonkey" Goodwin and Frenetic LLC.
@@ -68,12 +70,6 @@ Key names follow macOS key positions on a US layout (`A`, `1`, `Space`, `Return`
 - Modifier keys (Shift, Control, Option, Command, Caps Lock, fn) and media keys are never blocked.
 - While a password field has focus, macOS turns on Secure Event Input and hides keystrokes from the app, so chatter isn't blocked there.
 - Settings apply to all connected keyboards. macOS doesn't report which keyboard sent a key event.
-
-## Support
-
-If this app saves your keyboard, you can buy me a coffee:
-
-[![Buy me a coffee on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/olivierapex)
 
 ## License
 
